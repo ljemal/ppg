@@ -1,0 +1,10 @@
+---
+- name: assert
+  hosts: all
+  tasks:
+    - name: assert changes
+      assert:
+        that:
+          - ! task1change
+        fail_msg: "DRIFT DETECTED"
+        success_msg: "NO DRIFT DETECTED"
