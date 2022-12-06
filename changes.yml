@@ -1,0 +1,14 @@
+---
+- name: install older version of apache
+  hosts: all
+  tasks:
+    - name: install apache
+      yum:
+        name: httpd
+        state: latest
+      register: task1reg
+    - name: setting stats
+      set_stats:
+        data:
+          task1change: "{{ task1reg.changed }}"
+        per_host: yes
